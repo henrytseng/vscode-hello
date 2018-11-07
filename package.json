@@ -1,10 +1,9 @@
 {
-    "name": "hello-fuzzy-file",
-    "displayName": "HelloFuzzy - A superpowered file finder",
-    "description": "Fuzzy search file finder",
+    "name": "hellofuzzy",
+    "displayName": "helloFuzzy",
+    "description": "A fuzzy file finder",
     "version": "0.0.1",
     "publisher": "henryiis",
-    "license": "SEE LICENSE IN LICENSE",
     "engines": {
         "vscode": "^1.28.0"
     },
@@ -12,26 +11,29 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:hellofuzzy.findFile"
     ],
-    "main": "./extension",
+    "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
+                "command": "hellofuzzy.findFile",
                 "title": "Go to File",
-                "category": "HelloFuzzy"
+                "category": "helloFuzzy"
             }
         ]
     },
     "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
         "typescript": "^2.6.1",
         "vscode": "^1.1.21",
-        "eslint": "^4.11.0",
+        "tslint": "^5.8.0",
         "@types/node": "^8.10.25",
         "@types/mocha": "^2.2.42"
     }
